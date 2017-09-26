@@ -1,0 +1,50 @@
+<div [@routerTransition]>
+  <item-navigation  [heading]="'Show Category'" [icon]="'fa-minus'" [modifyAction]="'Cancel'" [actionUrl]="'categories'"></item-navigation>
+  <div class="row">
+      <div class="col col-xl-12 col-lg-12">
+          <div class="card-block bg-faded table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                        Name:
+                    </th>
+                    <td>
+                        {{model.name}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        Label:
+                    </th>
+                    <td>
+                        {{model.label}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        Searchable:
+                    </th>
+                    <td>
+                        {{model.searchable}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="col-12 push-1">
+                  <a [routerLink]="['/categories/edit', model.name]" class="btn btn-success">
+                    Edit
+                  </a>
+
+                  <a routerLink="/categories" class="btn btn-warning">
+                    Cancel
+                  </a>
+
+                  <button type="action" (click)="delete()" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

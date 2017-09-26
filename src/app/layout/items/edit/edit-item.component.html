@@ -1,0 +1,126 @@
+<div [@routerTransition]>
+  <item-navigation  [heading]="'Edit Item'" [icon]="'fa-minus'" [modifyAction]="'Cancel'" [actionUrl]="'items'"></item-navigation>
+  <div class="row">
+      <div class="col-md-10 push-1">
+          <form #itemsForm="ngForm" role="form" (ngSubmit)="onsubmit()">
+
+              <div class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label">Name</label>
+                  <div class="col-8">
+                    <input [(ngModel)]="model.name" required name="name" disabled class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <fieldset class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label">Category</label>
+                  <div class="col-8">
+                    <select [(ngModel)]="model.category" disabled required name="category" class="form-control">
+                        <option value="" selected>- - Choose Category - -</option>
+                        <option *ngFor="let row of categories" [value]="row.name" >{{row.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label">Description</label>
+                  <div class="col-8">
+                    <textarea [(ngModel)]="model.description" required name="description" class="form-control" rows="3"></textarea>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label">keyphrases for Search</label>
+                  <div class="col-8">
+                    <textarea [(ngModel)]="model.keyphrases" required name="keyphrases" class="form-control" rows="3"></textarea>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label">Category Tag</label>
+                  <div class="col-8">
+                    <select [(ngModel)]="model.categoryTag" required name="categoryTag" class="form-control">
+                        <option value="None" selected>- - Choose Tag - -</option>
+                        <ng-container *ngFor="let row of categories">
+                          <option *ngIf="!row.searchable" [value]="row.name" >
+                            {{row.name}}
+                          </option>
+                        </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+
+              <button type="submit" class="btn btn-success">Update</button>
+              <a routerLink="/items" class="btn btn-warning">
+                  Cancel
+              </a>
+
+              <hr>
+
+              <fieldset class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label"></label>
+                  <div class="col-8">
+                    <h4 class="text-warning">*Image File updates are saved immediately</h4>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label" for="exampleInputFile">Main Image</label>
+                  <div class="col-8">
+                    <div *ngIf="model.mainImage == null">No Image</div>
+                    <a href="{{model.mainImage}}">{{model.mainImage}}</a>
+                    <input (change)="fileEvent($event, 'mainImage')" required type="file" class="form-control-file">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label" for="exampleInputFile">Extra Image 1</label>
+                  <div class="col-8">
+                    <div *ngIf="model.extraImage1 == null">No Image</div>
+                    <a href="{{model.extraImage1}}">{{model.extraImage1}}</a>
+                    <input (change)="fileEvent($event, 'extraImage1')" required type="file" class="form-control-file">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label" for="exampleInputFile">Extra Image 2</label>
+                  <div class="col-8">
+                    <div *ngIf="model.extraImage2 == null">No Image</div>
+                    <a href="{{model.extraImage2}}">{{model.extraImage2}}</a>
+                    <input (change)="fileEvent($event, 'extraImage2')" required type="file" class="form-control-file">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <div class="row">
+                  <label class="col-3 control-label" for="exampleInputFile">Extra Image 3</label>
+                  <div class="col-8">
+                    <div *ngIf="model.extraImage3 == null">No Image</div>
+                    <a href="{{model.extraImage3}}">{{model.extraImage3}}</a>
+                    <input (change)="fileEvent($event, 'extraImage3')" required type="file" class="form-control-file">
+                  </div>
+                </div>
+              </fieldset>
+
+          </form>
+
+      </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+
+<div [@routerTransition]>
+  <item-navigation  [heading]="'Show Item'" [icon]="'fa-minus'" [modifyAction]="'Cancel'" [actionUrl]="'items'"></item-navigation>
+  <div class="row">
+      <div class="col col-xl-12 col-lg-12">
+          <div class="card-block bg-faded table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                        Name:
+                    </th>
+                    <td>
+                        {{model.name}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        category:
+                    </th>
+                    <td>
+                        {{model.category}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        description:
+                    </th>
+                    <td>
+                        {{model.description}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        keyphrases:
+                    </th>
+                    <td>
+                        {{model.keyphrases}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        Category Tag:
+                    </th>
+                    <td>
+                        {{model.categoryTag}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="model.mainImage != null">
+                    <th scope="row">
+                        mainImage:
+                    </th>
+                    <td>
+                        {{model.mainImage}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="model.extraImage1 != null">
+                    <th scope="row">
+                        extraImage1:
+                    </th>
+                    <td>
+                        {{model.extraImage1}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="model.extraImage2 != null">
+                    <th scope="row">
+                        extraImage2:
+                    </th>
+                    <td>
+                        {{model.extraImage2}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="model.extraImage3 != null">
+                    <th scope="row">
+                        extraImage3:
+                    </th>
+                    <td>
+                        {{model.extraImage3}}
+                    </td>
+                  </tr>
+                  <!-- </div> -->
+
+                  <!-- <tr *ngFor="let row of itemList">
+                    <td class="row-number-column"> -->
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="col-12 push-1">
+                  <a [routerLink]="['/items/edit', model.category, model.name]" class="btn btn-success">
+                    Edit
+                  </a>
+
+                  <a routerLink="/items" class="btn btn-warning">
+                    Cancel
+                  </a>
+
+                  <button type="action" (click)="delete()" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

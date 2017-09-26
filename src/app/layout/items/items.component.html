@@ -1,0 +1,39 @@
+<div [@routerTransition]>
+    <item-navigation [heading]="'Index Items'" [icon]="'fa-plus'" [modifyAction]="'Create'" [actionUrl]="'/items/create'"></item-navigation>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+                <div class="card-block table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>description</th>
+                            <!-- <th>Searchable</th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let row of itemList">
+                          <td class="row-number-column">
+                              {{row.category}}
+                          </td>
+                          <td class="row-number-column">
+                            <a [routerLink]="['/items/show', row.category, row.name]">
+                              {{row.name}}
+                            </a>
+                          </td>
+                          <td class="row-number-column">
+                              {{row.description}}
+                          </td>
+                          <!-- <td class="row-number-column">
+                              {{row.searchable}}
+                          </td> -->
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
